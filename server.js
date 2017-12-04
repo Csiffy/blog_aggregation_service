@@ -29,6 +29,17 @@ var page_body = '';
 var output = new Object();
 var atom_array = new Array();
 var rss_array = new Array();
+var isDebugMode = true;
+
+// Function section
+// This is a helper function for debuging, it is using the isDebugMode variable to control the console output
+// It has only one parameter, the string what you want to write out to the console
+console.debug = function(args)
+{
+  if (isDebugMode){
+    console.log(args);
+  }
+}
 
 // Array creation function which is checking the link type and push the url into the regarding array
 // It have two parameter, one is the exact link, and the other one is the link type
@@ -59,7 +70,26 @@ function return_output () {
 request(url, function (err, res, body) {
   page_header = res.headers;
   const page_document = parse5.parse(body);
-  console.log(page_document);
+  console.debug(page_document);
+  // TODO kell var, mert lehet 0. es 1. item is a html
+  if (page_document.childNodes[1].tagName === "html") {
+    page_html = page_document.childNodes[1];
+  } else {
+    console.log('Error, did not found html element');
+    process.exit(-1);
+  }
+  console.debug('---------- Page HTML ----------');
+  console.debug(page_html);
+  console.debug('-------------------------------');
+  for(var h = 0; h < page_html.childNodes.length; h++) {
+    console.debug('page_html belseje', page_html.childNodes[h].tagName);
+    if (page_html.childNodes[h].tagName === 'head') {
+      page_head = page_html.childNodes[h].childNodes;
+    }
+    if (page_html.childNodes[h].tagName === 'body') {
+      page_body = page_html.childNodes[h].childNodes;
+    }
+  }
 
   // Write out the output to the console with the reletad function
   return_output();
