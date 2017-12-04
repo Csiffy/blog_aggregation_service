@@ -1,18 +1,15 @@
 {
   "name": "blog_aggregation_service",
-  "version": "0.0.1",
+  "version": "0.8.0",
   "description": "blog aggregation service",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/example.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "url": "git+https://github.com/Csiffy/blog_aggregation_service.git"
   },
   "author": {
-    "name": "Zoltan Csiffary",
-    "email": "zoltan.csiffary@gmail.com"
+    "name": "Csiffy",
+    "email": "csiffaryz@gmail.com"
   },
   "license": "Apache-2.0",
   "keywords": [
@@ -30,7 +27,7 @@
   "maintainers": [
     {
       "name": "csiffy",
-      "email": "zoltan.csiffary@gmail.com"
+      "email": "csiffaryz@gmail.com"
     }
   ],
   "dependencies": {
@@ -38,8 +35,7 @@
     "request": "2.83.0"
   },
   "scripts": {
-    "lint": "standard",
-    "test": "npm run lint && npm run test_node",
+    "test": "npm run test_node",
     "test_node": "node server.js"
   }
 }
