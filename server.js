@@ -67,7 +67,7 @@ function return_output () {
 
 // Main section
 // Call the request function with the URL parameter
-var test = request(url, function (err, res, body) {
+request(url, function (err, res, body) {
   page_header = res.headers;
   const page_document = parse5.parse(body);
   console.debug(page_document);
