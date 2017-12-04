@@ -29,7 +29,7 @@ var page_body = '';
 var output = new Object();
 var atom_array = new Array();
 var rss_array = new Array();
-var isDebugMode = true;
+var isDebugMode = false;
 
 // Function section
 // This is a helper function for debuging, it is using the isDebugMode variable to control the console output
@@ -67,7 +67,7 @@ function return_output () {
 
 // Main section
 // Call the request function with the URL parameter
-request(url, function (err, res, body) {
+var test = request(url, function (err, res, body) {
   page_header = res.headers;
   const page_document = parse5.parse(body);
   console.debug(page_document);
@@ -90,7 +90,22 @@ request(url, function (err, res, body) {
       page_body = page_html.childNodes[h].childNodes;
     }
   }
-
+  console.debug('----------- Page Head ---------');
+  console.debug(page_head);
+  console.debug('-------------------------------');
+  for(var i = 0; i < page_head.length;i++){
+    current_item = page_head[i];
+    if (current_item.nodeName === "link") {
+      second_state = current_item.attrs;
+      for (var k = 0; k < second_state.length; k++) {
+        namevalueitem = second_state[k];
+        // TODO please modify back in production: if (namevalueitem.name === "type" && (namevalueitem.value === "application/atom+xml" || namevalueitem.value === "application/rss+xml"))
+        if (namevalueitem.name === "type" && (namevalueitem.value === "application/rsd+xml" || namevalueitem.value === "application/rss+xml")) {
+          create_array(second_state, namevalueitem.value);
+        }
+      }
+    }
+  }
   // Write out the output to the console with the reletad function
   return_output();
 });
