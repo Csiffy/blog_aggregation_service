@@ -1,0 +1,43 @@
+{
+  "name": "blog_aggregation_service",
+  "version": "0.0.1",
+  "description": "blog aggregation service",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/example.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Zoltan Csiffary",
+    "email": "zoltan.csiffary@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "blog",
+    "aggregation",
+    "atom",
+    "rss"
+  ],
+  "engines": {
+    "node": ">= 4"
+  },
+  "files": [
+    "server.js"
+  ],
+  "maintainers": [
+    {
+      "name": "csiffy",
+      "email": "zoltan.csiffary@gmail.com"
+    }
+  ],
+  "dependencies": {
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "npm run lint && npm run test_node",
+    "test_node": "node server.js"
+  }
+}
