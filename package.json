@@ -19,7 +19,7 @@
     "rss"
   ],
   "engines": {
-    "node": ">= 4"
+    "node": ">= 7"
   },
   "files": [
     "server.js"
